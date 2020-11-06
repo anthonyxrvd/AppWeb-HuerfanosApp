@@ -1,0 +1,44 @@
+<br><br><br><br>
+<div class="container">
+  <div class="card">
+    <div class="card-header ">
+      <h2>Empleados</h2>
+    </div>
+    <div class="my-2 text-left" >
+      <button class="btn btn-outline-warning btn-xl text-uppercase js-scroll-trigger" style="margin-left: 1.3% ;"type="button"
+       [routerLink]="['/empleados/agregar']">
+       Nuevo</button>
+    </div>
+    <div class="container theme-showcase" role="main">
+      <table class="table table-striped table-bordered table-hover">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Genero</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Datos Adicionales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados" class="text-center">
+            <td>{{empleado.id}}</td>
+            <td>{{empleado.nombre}}</td>
+            <td>{{empleado.apellido}}</td>
+            <td>{{empleado.genero}}</td>
+            <td>{{empleado.estado}}</td>
+            <td>{{empleado.telefono}}</td>
+            <td>{{empleado.createAt}}</td>
+            <td>
+              <button class="btn btn-warning" name="editar" [routerLink]="['/empleados/agregar',empleado.id]">Editar</button>
+              <button class="btn btn-danger" style="margin-left: 10px;" name="eliminar" (click)="delete(empleado)">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

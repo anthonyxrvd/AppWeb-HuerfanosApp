@@ -1,0 +1,99 @@
+<!--<div class="container col-md-6" >
+  <div class="card">
+    <div class="card-header">
+      <h2>Agregar Empleados</h2>
+    </div>
+    <div class="card-body" role="main">
+      <form action="">
+        <div class="form-group">
+          <label for="">NOMBRE:</label>
+          <input type ="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">APELLIDO:</label>
+          <input type ="text" class="form-control">
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>-->
+<div class="container col-md-7" style="padding:200px;">
+  <div class="card text-white">
+    <div class="card-header bg-dark text-white">
+      {{titulo}}
+    </div>
+    <div class="card-body " role="main" [hidden]="submitted">
+      <!--<form (ngSubmit)="create()">-->
+      <form #EmpleadoForm="ngForm">
+        <div class="form-group row">
+          <label for="nombre" class="col-form-label col-md-2">Nombre: </label>
+          <div class="col-md-6">
+            <input type="text" class="form-control" placeholder="Nombre completo" id="nombre" required
+              [(ngModel)]="empleado.nombre" name="nombre" #name="ngModel">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+              El nombre es REQUERIDO
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="apellido" class="col-form-label col-md-2">Apellido: </label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="empleado.apellido" name="apellido">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="edad" class="col-form-label col-md-2">Edad: </label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" required [(ngModel)]="empleado.edad" name="edad">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="genero" class="col-form-label col-md-2">Genero: </label>
+          <div class="col-sm-4">
+            <select type="text" class="form-control" [(ngModel)]="empleado.genero" name="genero">
+              <option value="Masculino">Masculino</option>
+              <option value="Femenino">Femenino</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="telefono" class="col-form-label col-md-2">Telefono: </label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control"
+            title="Un numero Valido consta de un codigo de region,un espacio o guión (-) y  9 numeros mas" pattern="\+[0-9]{2}[-][0-9]{9}"
+             placeholder="+51-123456789" required [(ngModel)]="empleado.telefono" name="telefono">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="estado" class="col-form-label col-md-2">Estado: </label>
+          <div class="col-sm-4">
+            <select type="text" class="form-control" [(ngModel)]="empleado.estado" name="estado">
+              <option value="Contratado">Contratado</option>
+              <option value="No Contratado">No Contratado</option>
+            </select>
+          </div>
+        </div>
+        <!--<div class="form-group row">
+          <label for="imagen" class="col-form-label col-md-2">Imagen: </label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" [(ngModel)]="empleado.foto" name="imagen">
+          </div>
+        </div>-->
+
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-info" role="button" (click)='create()' *ngIf="!empleado.id else elseBlock"
+              [disabled]="!EmpleadoForm.form.valid"> Crear Empleado</button>
+            <ng-template #elseBlock>
+              <button class="btn btn-info" role="button" [disabled]="!EmpleadoForm.form.valid" (click)='update()'>
+                Editar
+              </button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
